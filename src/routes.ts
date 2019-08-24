@@ -1,10 +1,13 @@
 import { createStackNavigator } from 'react-navigation';
-import { HomeScreen } from './views';
+import { HomeScreen, SettingsScreen } from './views';
 
 export default createStackNavigator(
   {
     Home: {
       screen: HomeScreen,
+    },
+    Settings: {
+      screen: SettingsScreen,
     },
   }, {
     initialRouteName: 'Home',
