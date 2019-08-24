@@ -4,7 +4,6 @@ export default styled.View`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100%;
-  min-width: 100%;
+  flex: 1;
   background: rebeccapurple;
 `;
