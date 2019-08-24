@@ -1,19 +1,10 @@
-import React from 'react';
-import styled from 'styled-components/native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
+import { HomeScreen } from './src/views';
 
-const Container = styled.View`
-  flex: 1;
-  background-color: #ffffff;
-  align-items: center;
-  justify-content: center;
-`;
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen,
+  },
+});
 
-const Message = styled.Text``;
-
-export default function App() {
-  return (
-    <Container>
-      <Message>Open up App.tsx to start working on your app!</Message>
-    </Container>
-  );
-}
+export default createAppContainer(AppNavigator);
