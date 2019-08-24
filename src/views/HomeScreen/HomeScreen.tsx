@@ -9,4 +9,8 @@ const HomeScreen = () => {
   );
 }
 
+HomeScreen.navigationOptions = {
+  title: 'ADHDay',
+};
+
 export default HomeScreen;
