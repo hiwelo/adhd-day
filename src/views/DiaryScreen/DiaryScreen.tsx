@@ -3,20 +3,20 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { TabBarIconInterface } from '../../common/types';
 
-const SettingsScreen = () => {
+const DiaryScreen = () => {
   return (
     <View>
-      <Text>Welcome to the settings!</Text>
+      <Text>Welcome to your diary!</Text>
     </View>
   );
 };
 
-SettingsScreen.navigationOptions = {
-  title: 'Settings',
+DiaryScreen.navigationOptions = {
+  title: 'Diary',
   tabBarIcon: ({ tintColor }: TabBarIconInterface) => (
-    <Ionicons name="ios-settings" size={20} color={tintColor} />
+    <Ionicons name="ios-analytics" size={20} color={tintColor} />
   ),
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Diary',
 };
 
-export default SettingsScreen;
+export default DiaryScreen;

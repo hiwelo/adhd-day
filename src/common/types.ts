@@ -1,12 +1,15 @@
 import {
   NavigationParams,
   NavigationScreenProp,
-  NavigationState
+  NavigationState,
 } from 'react-navigation';
 
-/**
- * Describes basic props for any component rendering a screen in this application
- */
 export interface ScreenPropsInterface {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+export interface TabBarIconInterface {
+  focused?: boolean;
+  horizontal?: boolean;
+  tintColor?: string;
 }

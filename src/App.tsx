@@ -6,12 +6,12 @@ import { createAppContainer } from 'react-navigation';
 import routes from './routes';
 import { store, persistor } from './store';
 
-const AppContainer = createAppContainer(routes);
+const NavigationContainer = createAppContainer(routes);
 
 const App = () => (
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <AppContainer />
+      <NavigationContainer />
     </PersistGate>
   </Provider>
 );

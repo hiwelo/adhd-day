@@ -5,12 +5,12 @@ import ExpoFileSystemStorage from 'redux-persist-expo-filesystem';
 import { reducer as dataReducer } from './data/reducer';
 
 const rootReducer = combineReducers({
-  data: dataReducer
+  data: dataReducer,
 });
 
 const persistConfig = {
   key: 'root',
-  storage: ExpoFileSystemStorage
+  storage: ExpoFileSystemStorage,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

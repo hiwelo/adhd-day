@@ -4,7 +4,7 @@ import * as actionTypes from './actionTypes';
  * Defines the initial shape for this data point
  */
 const INITIAL_STATE = {
-  name: undefined
+  name: undefined,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
@@ -14,7 +14,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case actionTypes.SET:
       return {
         ...state,
-        ...payload
+        ...payload,
       };
 
     case actionTypes.EMPTY:

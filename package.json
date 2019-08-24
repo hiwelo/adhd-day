@@ -9,6 +9,7 @@
     "lint": "tsc --noEmit && eslint --fix --ext .ts,.tsx ./"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.0.0",
     "expo": "^34.0.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
