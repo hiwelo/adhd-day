@@ -6,16 +6,17 @@ import { isAppConfigured } from './utilities';
 export default createStackNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: HomeScreen
     },
     Settings: {
-      screen: SettingsScreen,
+      screen: SettingsScreen
     },
     Welcome: {
-      screen: WelcomeScreen,
+      screen: WelcomeScreen
     }
-  }, {
+  },
+  {
     initialRouteName: isAppConfigured() ? 'Home' : 'Welcome',
-    headerMode: 'none',
+    headerMode: 'none'
   }
 );

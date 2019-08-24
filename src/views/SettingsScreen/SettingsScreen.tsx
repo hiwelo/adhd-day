@@ -7,10 +7,10 @@ const SettingsScreen = () => {
       <Text>Welcome to the settings!</Text>
     </View>
   );
-}
+};
 
 SettingsScreen.navigationOptions = {
-  title: 'Settings',
+  title: 'Settings'
 };
 
 export default SettingsScreen;

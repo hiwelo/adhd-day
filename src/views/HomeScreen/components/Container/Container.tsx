@@ -6,4 +6,3 @@ export default styled.View`
   align-items: center;
   justify-content: center;
 `;
-

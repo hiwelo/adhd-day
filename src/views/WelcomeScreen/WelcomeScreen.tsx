@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 
 import { WelcomeView } from './components';
 import { WelcomeStep } from '../../components';
@@ -14,7 +14,7 @@ const WelcomeScreen = () => (
 );
 
 WelcomeScreen.navigationOptions = {
-  headerMode: 'none',
+  headerMode: 'none'
 };
 
 export default WelcomeScreen;

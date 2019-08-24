@@ -7,10 +7,10 @@ const HomeScreen = () => {
       <Message>Open up App.tsx to start working on your app!</Message>
     </Container>
   );
-}
+};
 
 HomeScreen.navigationOptions = {
-  title: 'ADHDay',
+  title: 'ADHDay'
 };
 
 export default HomeScreen;
