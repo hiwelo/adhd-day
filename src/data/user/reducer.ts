@@ -14,7 +14,7 @@ export const reducer = (state = INITIAL_STATE, action) => {
     case actionTypes.SET:
       return {
         ...state,
-        name: payload
+        ...payload
       };
 
     case actionTypes.EMPTY:

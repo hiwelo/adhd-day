@@ -5310,6 +5310,11 @@ redux-persist@^5.10.0:
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-5.10.0.tgz#5d8d802c5571e55924efc1c3a9b23575283be62b"
   integrity sha512-sSJAzNq7zka3qVHKce1hbvqf0Vf5DuTVm7dr4GtsqQVOexnrvbV47RWFiPxQ8fscnyiuWyD2O92DOxPl0tGCRg==
 
+redux-react-hook@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/redux-react-hook/-/redux-react-hook-3.3.2.tgz#1cdad45009dfa264f46c2a9959d86ce1401df725"
+  integrity sha512-WdKoDA8FF25c9Tzy5iflM0wEbhilNrcXlAMg6OMgoAaH/bF20+A1H8y4c3B7F7oQGRFpAcBmiBiU//ZHd0AfOw==
+
 redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"

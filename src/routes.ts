@@ -16,7 +16,7 @@ export default createStackNavigator(
     }
   },
   {
-    initialRouteName: isAppConfigured() ? 'Home' : 'Welcome',
+    initialRouteName: 'Home',
     headerMode: 'none'
   }
 );
