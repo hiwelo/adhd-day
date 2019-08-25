@@ -1,12 +1,44 @@
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
+import { Notifications } from 'expo';
+import { LocalNotification } from 'expo/build/Notifications/Notifications.types';
+
 import { TabBarIconInterface } from '../../common/types';
+import { askPermissions } from '../../utilities';
 
 const PillsScreen = () => {
+  const triggerNotification = async () => {
+    askPermissions();
+
+    const localNotification: LocalNotification = {
+      title: 'Hello Notifications!',
+      body: 'This is a test!',
+      ios: {
+        sound: false,
+      },
+    };
+
+    let sendWithDelay = Date.now();
+    sendWithDelay += 5000;
+
+    const schedulingOptions = { time: sendWithDelay };
+
+    Notifications.scheduleLocalNotificationAsync(
+      localNotification,
+      schedulingOptions,
+    );
+  };
+
   return (
     <View>
       <Text>Welcome to the Pills paradize!</Text>
+      <Text>This page will be used to keep track of your medicine.</Text>
+      <Text>At the moment, we are mainly testing notifications with it.</Text>
+      <Button
+        title="Trigger notification"
+        onPress={() => triggerNotification()}
+      />
     </View>
   );
 };
