@@ -4,8 +4,8 @@ import { View, Text, Button } from 'react-native';
 import { Notifications } from 'expo';
 import { LocalNotification } from 'expo/build/Notifications/Notifications.types';
 
+import { askPermissions } from '../../common';
 import { TabBarIconInterface } from '../../common/types';
-import { askPermissions } from '../../utilities';
 
 const PillsScreen = () => {
   const triggerNotification = async () => {
