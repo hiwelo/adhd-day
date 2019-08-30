@@ -1,32 +1,54 @@
-import { filter, findIndex } from 'lodash';
+import { filter, uniqBy } from 'lodash';
+import uniqid from 'uniqid';
 
-import * as actionTypes from './actionTypes';
-import MedicationIntakeInterface from './interface';
+import {
+  ADD,
+  EDIT,
+  REMOVE,
+  MedicationAdherence,
+  MedicationIntakeAction,
+} from './types';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE: MedicationAdherence = {
+  intakes: [],
+};
 
 export const reducer = (
-  state: MedicationIntakeInterface[] = INITIAL_STATE,
-  { type, payload },
-) => {
-  switch (type) {
-    case actionTypes.ADD: {
-      return [...state, ...payload];
+  state = INITIAL_STATE,
+  action: MedicationIntakeAction,
+): MedicationAdherence => {
+  switch (action.type) {
+    case ADD: {
+      return {
+        ...state,
+        intakes: [
+          ...state.intakes,
+          {
+            ...action.payload,
+            intakeId: action.payload.intakeId || uniqid(),
+          },
+        ],
+      };
     }
 
-    case actionTypes.EDIT: {
-      const updatedState = state;
-      const editedItemIndex = findIndex(
-        state,
-        item => item.medicationId === payload.medicationId,
-      );
-      updatedState[editedItemIndex] = payload;
-
-      return updatedState;
+    case EDIT: {
+      return {
+        ...state,
+        intakes: uniqBy(
+          [action.payload, ...state.intakes],
+          item => item.intakeId,
+        ),
+      };
     }
 
-    case actionTypes.REMOVE: {
-      return filter(state, item => item.medicationId !== payload.medicationId);
+    case REMOVE: {
+      return {
+        ...state,
+        intakes: filter(
+          state.intakes,
+          item => item.intakeId !== action.meta.intakeId,
+        ),
+      };
     }
 
     default:
