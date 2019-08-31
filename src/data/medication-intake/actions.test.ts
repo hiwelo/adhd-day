@@ -1,6 +1,10 @@
-import { mockIntake } from './__mocks__';
 import { addIntake, editIntake, removeIntake } from './actions';
 import { ADD, EDIT, REMOVE } from './types';
+
+const mockIntake = {
+  medicationId: 'testMedicationId',
+  timestamp: new Date(),
+};
 
 describe('Medication Intake – Actions', () => {
   it('should create an action to add an intake', () => {

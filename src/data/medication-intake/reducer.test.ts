@@ -1,12 +1,29 @@
+import { v4 as uuid } from 'uuid';
+
 import { reducer } from './reducer';
 import { ADD, EDIT, MedicationIntake, REMOVE } from './types';
-import { mockIntake, mockIntakes } from './__mocks__';
 
 const initialState: MedicationIntake[] = [];
 
+const mockIntake = {
+  medicationId: 'testMedicationId',
+  timestamp: new Date(),
+};
+
+const mockIntakes = [
+  {
+    ...mockIntake,
+    intakeId: uuid(),
+  },
+  {
+    ...mockIntake,
+    intakeId: uuid(),
+  },
+];
+
 describe('Medication Intake – Reducer', () => {
   it('should initiate the state', () => {
-    const state = reducer([]);
+    const state = reducer();
 
     expect(state).toStrictEqual([]);
   });
