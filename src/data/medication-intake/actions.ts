@@ -19,7 +19,7 @@ export const editIntake = (
 };
 
 export const removeIntake = (
-  payload: MedicationIntake,
+  intakeId: MedicationIntake['intakeId'],
 ): MedicationIntakeAction => {
-  return { type: REMOVE, payload };
+  return { type: REMOVE, meta: { intakeId } };
 };
