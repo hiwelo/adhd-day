@@ -1,23 +1,23 @@
-import * as actionTypes from './actionTypes';
+import { EMPTY, SET, User, UserAction } from './types';
 
 /**
  * Defines the initial shape for this data point
  */
-const INITIAL_STATE = {
+const INITIAL_STATE: User = {
   name: undefined,
 };
 
-export const reducer = (state = INITIAL_STATE, action) => {
-  const { type, payload } = action;
+export const reducer = (state = INITIAL_STATE, action?: UserAction): User => {
+  const request = action || { type: '' };
 
-  switch (type) {
-    case actionTypes.SET:
+  switch (request.type) {
+    case SET:
       return {
         ...state,
-        ...payload,
+        ...request.payload,
       };
 
-    case actionTypes.EMPTY:
+    case EMPTY:
       return INITIAL_STATE;
 
     default:

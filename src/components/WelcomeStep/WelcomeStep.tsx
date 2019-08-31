@@ -3,7 +3,7 @@ import { Button } from 'react-native';
 
 import { WelcomeTitle } from './components';
 import TextInput from '../TextInput';
-import UserInterface from '../../data/user/interface';
+import { User as UserInterface } from '../../data/user/types';
 
 interface WelcomeStep {
   submitCallback: WelcomeStepConfigurationCallback;
