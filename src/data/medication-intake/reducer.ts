@@ -13,25 +13,29 @@ const INITIAL_STATE: MedicationIntake[] = [];
 
 export const reducer = (
   state = INITIAL_STATE,
-  action: MedicationIntakeAction,
+  action?: MedicationIntakeAction,
 ): MedicationIntake[] => {
-  switch (action.type) {
+  const request = action || {
+    type: '',
+  };
+
+  switch (request.type) {
     case ADD: {
       return [
         ...state,
         {
-          ...action.payload,
-          intakeId: action.payload.intakeId || uuid(),
+          ...request.payload,
+          intakeId: request.payload.intakeId || uuid(),
         },
       ];
     }
 
     case EDIT: {
-      return uniqBy([action.payload, ...state], item => item.intakeId);
+      return uniqBy([request.payload, ...state], item => item.intakeId);
     }
 
     case REMOVE: {
-      return filter(state, item => item.intakeId !== action.meta.intakeId);
+      return filter(state, item => item.intakeId !== request.meta.intakeId);
     }
 
     default:

@@ -5,6 +5,12 @@ import { mockIntake, mockIntakes } from './__mocks__';
 const initialState: MedicationIntake[] = [];
 
 describe('Medication Intake – Reducer', () => {
+  it('should initiate the state', () => {
+    const state = reducer([]);
+
+    expect(state).toStrictEqual([]);
+  });
+
   it('should add new intake to the state', () => {
     const state = reducer(initialState, {
       type: ADD,
