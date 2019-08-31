@@ -4,19 +4,7 @@ import MedicationInterface, {
 
 // Describes data containers
 
-export interface MedicationAdherence {
-  /**
-   * List all intakes for the current users
-   */
-  intakes: MedicationIntake[];
-}
-
 export interface MedicationIntake {
-  /**
-   * ID of this intake
-   */
-  intakeId: string;
-
   /**
    * ID of the related medication
    */
@@ -26,6 +14,11 @@ export interface MedicationIntake {
    * Timestamp of the intake
    */
   timestamp: Date;
+
+  /**
+   * ID of this intake
+   */
+  intakeId?: string;
 
   /**
    * Status for this intake

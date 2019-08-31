@@ -1,54 +1,37 @@
 import { filter, uniqBy } from 'lodash';
-import uniqid from 'uniqid';
+import { v4 as uuid } from 'uuid';
 
 import {
   ADD,
   EDIT,
   REMOVE,
-  MedicationAdherence,
+  MedicationIntake,
   MedicationIntakeAction,
 } from './types';
 
-const INITIAL_STATE: MedicationAdherence = {
-  intakes: [],
-};
+const INITIAL_STATE: MedicationIntake[] = [];
 
 export const reducer = (
   state = INITIAL_STATE,
   action: MedicationIntakeAction,
-): MedicationAdherence => {
+): MedicationIntake[] => {
   switch (action.type) {
     case ADD: {
-      return {
+      return [
         ...state,
-        intakes: [
-          ...state.intakes,
-          {
-            ...action.payload,
-            intakeId: action.payload.intakeId || uniqid(),
-          },
-        ],
-      };
+        {
+          ...action.payload,
+          intakeId: action.payload.intakeId || uuid(),
+        },
+      ];
     }
 
     case EDIT: {
-      return {
-        ...state,
-        intakes: uniqBy(
-          [action.payload, ...state.intakes],
-          item => item.intakeId,
-        ),
-      };
+      return uniqBy([action.payload, ...state], item => item.intakeId);
     }
 
     case REMOVE: {
-      return {
-        ...state,
-        intakes: filter(
-          state.intakes,
-          item => item.intakeId !== action.meta.intakeId,
-        ),
-      };
+      return filter(state, item => item.intakeId !== action.meta.intakeId);
     }
 
     default:

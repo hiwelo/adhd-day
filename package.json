@@ -28,7 +28,7 @@
     "redux-react-hook": "^3.3.2",
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2",
-    "uniqid": "^5.0.3"
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "^0.0.5",
