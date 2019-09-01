@@ -1,1 +1,1 @@
-export { default } from './WelcomeStep';
+export { default as WelcomeStep } from './WelcomeStep';

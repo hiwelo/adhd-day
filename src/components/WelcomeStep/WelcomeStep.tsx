@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { Button } from 'react-native';
 
-import { WelcomeTitle } from './components';
-import TextInput from '../TextInput';
-import { User as UserInterface } from '../../data/user/types';
+import { WelcomeBlock, WelcomeTitle } from './components';
+import { WelcomeStepConfigurationCallback } from './types';
+import { Paragraph } from '../Paragraph';
+import { TextInput } from '../TextInput';
 
-interface WelcomeStep {
+type WelcomeStepProps = {
   submitCallback: WelcomeStepConfigurationCallback;
-}
+};
 
-interface WelcomeStepConfigurationCallback {
-  (payload?: UserInterface): any;
-}
-
-const WelcomeStep = ({ submitCallback }: WelcomeStep) => {
-  const [name, setName] = useState('');
+const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
+  const [name, setName] = useState(undefined);
 
   /**
    * Completes the Welcome step by calling requested callback and redirects the
@@ -25,15 +22,16 @@ const WelcomeStep = ({ submitCallback }: WelcomeStep) => {
   };
 
   return (
-    <>
-      <WelcomeTitle>Welcome! I&apos;m Sam, nice to meet you!</WelcomeTitle>
+    <WelcomeBlock>
+      <WelcomeTitle>Welcome! 👋</WelcomeTitle>
+      <Paragraph>I&apos;m Sam, nice to meet you!</Paragraph>
       <TextInput
         autoCompleteType="name"
         onChange={event => setName(event.nativeEvent.text)}
         placeholder="What's your name?"
       />
       <Button title="Let's start!" onPress={() => completeStep()} />
-    </>
+    </WelcomeBlock>
   );
 };
 
