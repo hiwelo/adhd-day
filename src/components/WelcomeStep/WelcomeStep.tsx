@@ -1,23 +1,22 @@
 import { Formik, FormikProps } from 'formik';
 import React from 'react';
 import { Button } from 'react-native';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import { WelcomeBlock, WelcomeTitle } from './components';
-import { WelcomeStepConfigurationCallback } from './types';
 import { Paragraph } from '../Paragraph';
 import { TextInput } from '../TextInput';
+import { setUser } from '../../data/user/actions';
 import { User } from '../../data/user/types';
-
-type WelcomeStepProps = {
-  submitCallback: WelcomeStepConfigurationCallback;
-};
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
 });
 
-const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
+const WelcomeStep = () => {
+  const dispatch = useDispatch();
+
   return (
     <WelcomeBlock>
       <WelcomeTitle>Welcome! 👋</WelcomeTitle>
@@ -33,7 +32,9 @@ const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
         initialValues={{ name: '' }}
         validationSchema={validationSchema}
         onSubmit={(values: User) => {
-          submitCallback(values);
+          if (!values.name) return;
+
+          dispatch(setUser(values));
         }}
         render={({
           handleBlur,
