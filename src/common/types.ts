@@ -1,3 +1,4 @@
+import { AppTheme } from 'styled-components';
 import {
   NavigationParams,
   NavigationScreenProp,
@@ -6,6 +7,10 @@ import {
 
 export interface ScreenPropsInterface {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
+export interface StyledComponentProps {
+  theme?: AppTheme;
 }
 
 export interface TabBarIconInterface {
