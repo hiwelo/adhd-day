@@ -24,13 +24,13 @@ const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
   return (
     <WelcomeBlock>
       <WelcomeTitle>Welcome! 👋</WelcomeTitle>
-      <Paragraph>I&apos;m Sam, nice to meet you!</Paragraph>
+      <Paragraph>I'm Sam, nice to meet you!</Paragraph>
       <Paragraph>
         I am a ADHD companion. My purpose is to help you with your daily
         routines and medications.
       </Paragraph>
       <Paragraph>
-        Let's start with the basics,{'\n'}how should I call you?
+        Ready? So let's start with the basics, how should I call you?
       </Paragraph>
       <TextInput
         autoCompleteType="name"
