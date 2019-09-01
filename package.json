@@ -7,8 +7,11 @@
     "eject": "expo eject",
     "lint": "tsc --noEmit && eslint --fix --ext .ts,.tsx ./",
     "web": "expo start --web",
-    "test": "jest --colors",
-    "test:coverage": "yarn test --coverage"
+    "test": "yarn test:watch",
+    "test:ci": "yarn jest --coverage=true",
+    "test:debug": "yarn jest -o --watch",
+    "test:updateSnapshots": "yarn jest -u",
+    "test:watch": "yarn jest --watch --changedSince=origin/master --colors"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
