@@ -1,32 +1,41 @@
-import { filter, findIndex } from 'lodash';
+import { filter, uniqBy } from 'lodash';
+import { v4 as uuid } from 'uuid';
 
-import * as actionTypes from './actionTypes';
-import MedicationIntakeInterface from './interface';
+import {
+  ADD,
+  EDIT,
+  REMOVE,
+  MedicationIntake,
+  MedicationIntakeAction,
+} from './types';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE: MedicationIntake[] = [];
 
 export const reducer = (
-  state: MedicationIntakeInterface[] = INITIAL_STATE,
-  { type, payload },
-) => {
-  switch (type) {
-    case actionTypes.ADD: {
-      return [...state, ...payload];
+  state = INITIAL_STATE,
+  action?: MedicationIntakeAction,
+): MedicationIntake[] => {
+  const request = action || {
+    type: '',
+  };
+
+  switch (request.type) {
+    case ADD: {
+      return [
+        ...state,
+        {
+          ...request.payload,
+          intakeId: request.payload.intakeId || uuid(),
+        },
+      ];
     }
 
-    case actionTypes.EDIT: {
-      const updatedState = state;
-      const editedItemIndex = findIndex(
-        state,
-        item => item.medicationId === payload.medicationId,
-      );
-      updatedState[editedItemIndex] = payload;
-
-      return updatedState;
+    case EDIT: {
+      return uniqBy([request.payload, ...state], item => item.intakeId);
     }
 
-    case actionTypes.REMOVE: {
-      return filter(state, item => item.medicationId !== payload.medicationId);
+    case REMOVE: {
+      return filter(state, item => item.intakeId !== request.meta.intakeId);
     }
 
     default:

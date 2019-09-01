@@ -1,13 +1,9 @@
-import { EMPTY, SET } from './actionTypes';
+import { EMPTY, SET, User, UserAction } from './types';
 
-/**
- * UserActions creators
- */
-
-export const resetUser = () => {
+export const resetUser = (): UserAction => {
   return { type: EMPTY };
 };
 
-export const setUser = payload => {
+export const setUser = (payload: User): UserAction => {
   return { type: SET, payload };
 };
