@@ -5,5 +5,5 @@ export default styled.View`
   justify-content: center;
   align-items: center;
   flex: 1;
-  background: rebeccapurple;
+  background: white;
 `;
