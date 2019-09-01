@@ -1,1 +1,0 @@
-export { askPermissions } from './askPermissions';

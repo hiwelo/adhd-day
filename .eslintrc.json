@@ -8,6 +8,10 @@
     "prettier/react"
   ],
   "plugins": ["@typescript-eslint", "prettier"],
+  "globals": {
+    "console": true,
+    "jest": true
+  },
   "rules": {
     "prettier/prettier": ["error", {
       "singleQuote": true,

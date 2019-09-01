@@ -3,13 +3,21 @@ import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { Notifications } from 'expo';
 import { LocalNotification } from 'expo/build/Notifications/Notifications.types';
+import Permissions from 'expo-permissions';
 
-import { askPermissions } from '../../common';
+import { getPermission } from '../../common';
 import { TabBarIconInterface } from '../../common/types';
 
 const PillsScreen = () => {
   const triggerNotification = async () => {
-    askPermissions();
+    const notificationPermission = await getPermission(
+      Permissions.NOTIFICATIONS,
+    );
+
+    // early-termination if permission not granted
+    if (notificationPermission !== Permissions.PermissionStatus.GRANTED) {
+      return;
+    }
 
     const localNotification: LocalNotification = {
       title: 'Hello Notifications!',
