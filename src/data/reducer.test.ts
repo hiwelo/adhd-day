@@ -2,9 +2,7 @@ import * as path from 'path';
 import { createStore } from 'redux';
 
 import { reducer } from './reducer';
-import { getDirectoriesList } from '../common';
-
-import console = require('console');
+import { getDirectoriesList } from '../../tests/utilities';
 
 const store = createStore(reducer);
 

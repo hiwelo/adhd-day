@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/12.7.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add @types/fs @types/path --dev
+  /usr/local/Cellar/node/12.7.0/bin/node /usr/local/Cellar/yarn/1.17.3/libexec/bin/yarn.js add react-native-testing-library @types/react-native-testing-library --dev
 
 PATH: 
   /Users/hiwelo/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/MacGPG2/bin:/Users/hiwelo/.composer/vendor/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2ffs: Not found
+  Error: https://registry.yarnpkg.com/@types%2freact-native-testing-library: Not found
       at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:66830:18)
       at Request.self.callback (/usr/local/Cellar/yarn/1.17.3/libexec/lib/cli.js:140464:22)
       at Request.emit (events.js:203:13)
@@ -36,8 +36,11 @@ npm manifest:
       "eject": "expo eject",
       "lint": "tsc --noEmit && eslint --fix --ext .ts,.tsx ./",
       "web": "expo start --web",
-      "test": "jest --colors",
-      "test:coverage": "yarn test --coverage"
+      "test": "yarn test:watch",
+      "test:ci": "yarn jest --coverage=true",
+      "test:debug": "yarn jest -o --watch",
+      "test:updateSnapshots": "yarn jest -u",
+      "test:watch": "yarn jest --watch --changedSince=origin/master --colors"
     },
     "dependencies": {
       "@expo/vector-icons": "^10.0.0",
@@ -64,8 +67,10 @@ npm manifest:
     "devDependencies": {
       "@react-native-community/eslint-config": "^0.0.5",
       "@types/jest": "^24.0.18",
+      "@types/node": "^12.7.3",
       "@types/react": "^16.8.23",
       "@types/react-native": "^0.57.65",
+      "@types/react-test-renderer": "^16.9.0",
       "@types/styled-components": "^4.1.18",
       "@types/uniqid": "^4.1.3",
       "@typescript-eslint/eslint-plugin": "^2.0.0",
@@ -86,7 +91,8 @@ npm manifest:
       "react-test-renderer": "^16.9.0",
       "redux-logger": "^3.0.6",
       "ts-jest": "^24.0.2",
-      "typescript": "^3.4.5"
+      "typescript": "^3.4.5",
+      "util": "^0.12.1"
     },
     "private": true
   }
@@ -1300,6 +1306,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.137.tgz#8a4804937dc6462274ffcc088df8f14fc1b368e2"
     integrity sha512-g4rNK5SRKloO+sUGbuO7aPtwbwzMgjK+bm9BBhLD7jGUiGR7zhwYEhSln/ihgYQBeIJ5j7xjyaYzrWTcu3UotQ==
   
+  "@types/node@^12.7.3":
+    version "12.7.3"
+    resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.3.tgz#27b3f40addaf2f580459fdb405222685542f907a"
+    integrity sha512-3SiLAIBkDWDg6vFo0+5YJyHPWU9uwu40Qe+v+0MH8wRKYBimHvvAOyk3EzMrD/TrIlLYfXrqDqrg913PynrMJQ==
+  
   "@types/prop-types@*":
     version "15.7.1"
     resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.1.tgz#f1a11e7babb0c3cad68100be381d1e064c68f1f6"
@@ -1324,6 +1335,13 @@ Lockfile:
     integrity sha512-7P5ulTb+/cnwbABWaAjzKmSYkRWeK7UCTfUwHhDpnwxdiL2X/KbdN1sPgo0B2E4zxfYE3MEoHv7FhB8Acfvf8A==
     dependencies:
       "@types/prop-types" "*"
+      "@types/react" "*"
+  
+  "@types/react-test-renderer@^16.9.0":
+    version "16.9.0"
+    resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-16.9.0.tgz#d60f530ecf4c906721511603cca711b4fa830d41"
+    integrity sha512-bN5EyjtuTY35xX7N5j0KP1vg5MpUXHpFTX6tGsqkNOthjNvet4VQOYRxFh+NT5cDSJrATmAFK9NLeYZ4mp/o0Q==
+    dependencies:
       "@types/react" "*"
   
   "@types/react@*", "@types/react@^16.8.23":
@@ -4065,6 +4083,11 @@ Lockfile:
     dependencies:
       kind-of "^6.0.0"
   
+  is-arguments@^1.0.4:
+    version "1.0.4"
+    resolved "https://registry.yarnpkg.com/is-arguments/-/is-arguments-1.0.4.tgz#3faf966c7cba0ff437fb31f6250082fcf0448cf3"
+    integrity sha512-xPh0Rmt8NE65sNzvyUmWgI1tz3mKq74lGA0mL8LYZcoIzKOzDh6HmrYm3d18k60nHerC8A9Km8kYu87zfSFnLA==
+  
   is-arrayish@^0.2.1:
     version "0.2.1"
     resolved "https://registry.yarnpkg.com/is-arrayish/-/is-arrayish-0.2.1.tgz#77c99840527aa8ecb1a8ba697b80645a7a926a9d"
@@ -4179,6 +4202,11 @@ Lockfile:
     version "2.1.0"
     resolved "https://registry.yarnpkg.com/is-generator-fn/-/is-generator-fn-2.1.0.tgz#7d140adc389aaf3011a8f2a2a4cfa6faadffb118"
     integrity sha512-cTIB4yPYL/Grw0EaSzASzg6bBy9gqCofvWN8okThAYIxKJZC+udlRAmGbM0XLeniEJSs8uEgHPGuHSe1XsOLSQ==
+  
+  is-generator-function@^1.0.7:
+    version "1.0.7"
+    resolved "https://registry.yarnpkg.com/is-generator-function/-/is-generator-function-1.0.7.tgz#d2132e529bb0000a7f80794d4bdf5cd5e5813522"
+    integrity sha512-YZc5EwyO4f2kWCax7oegfuSr9mFz1ZvieNYBEjmukLxgXfBUbxAWGVF7GZf0zidYtoBl3WvC07YK0wT76a+Rtw==
   
   is-glob@^2.0.0, is-glob@^2.0.1:
     version "2.0.1"
@@ -7856,6 +7884,17 @@ Lockfile:
     integrity sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==
     dependencies:
       inherits "2.0.3"
+  
+  util@^0.12.1:
+    version "0.12.1"
+    resolved "https://registry.yarnpkg.com/util/-/util-0.12.1.tgz#f908e7b633e7396c764e694dd14e716256ce8ade"
+    integrity sha512-MREAtYOp+GTt9/+kwf00IYoHZyjM8VU4aVrkzUlejyqaIjd2GztVl5V9hGXKlvBKE3gENn/FMfHE5v6hElXGcQ==
+    dependencies:
+      inherits "^2.0.3"
+      is-arguments "^1.0.4"
+      is-generator-function "^1.0.7"
+      object.entries "^1.1.0"
+      safe-buffer "^5.1.2"
   
   utils-merge@1.0.1:
     version "1.0.1"
