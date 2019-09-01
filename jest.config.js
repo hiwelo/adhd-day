@@ -12,4 +12,6 @@ module.exports = {
   globals: { 'ts-jest': { tsConfig: { jsx: 'react' } } },
   moduleFileExtensions: ['js', 'ts', 'tsx'],
   testMatch: ['**/__tests__/**/*.ts?(x)', '**/?(*.)+(spec|test).ts?(x)'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };
