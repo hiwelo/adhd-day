@@ -15,7 +15,8 @@
       "tabWidth": 2,
       "semi": true
     }],
-    "import/prefer-default-export": 0
+    "import/prefer-default-export": 0,
+    "no-console": 0
   },
   "parser": "@typescript-eslint/parser"
 }

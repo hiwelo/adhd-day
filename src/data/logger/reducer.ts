@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 import { ADD, REMOVE, Log, LogActions } from './types';
 
-const INITIAL_STATE = [];
+const INITIAL_STATE: Log[] = [];
 
 export const reducer = (state = INITIAL_STATE, action?: LogActions): Log[] => {
   const request = action || { type: '' };
