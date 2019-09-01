@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import { Formik, FormikProps } from 'formik';
+import React from 'react';
 import { Button } from 'react-native';
+import * as Yup from 'yup';
 
 import { WelcomeBlock, WelcomeTitle } from './components';
 import { WelcomeStepConfigurationCallback } from './types';
 import { Paragraph } from '../Paragraph';
 import { TextInput } from '../TextInput';
+import { User } from '../../data/user/types';
 
 type WelcomeStepProps = {
   submitCallback: WelcomeStepConfigurationCallback;
 };
 
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required(),
+});
+
 const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
-  const [name, setName] = useState(undefined);
-
-  /**
-   * Completes the Welcome step by calling requested callback and redirects the
-   * user to the home screen
-   */
-  const completeStep = () => {
-    submitCallback({ name });
-  };
-
   return (
     <WelcomeBlock>
       <WelcomeTitle>Welcome! 👋</WelcomeTitle>
@@ -32,12 +29,31 @@ const WelcomeStep = ({ submitCallback }: WelcomeStepProps) => {
       <Paragraph>
         Ready? So let's start with the basics, how should I call you?
       </Paragraph>
-      <TextInput
-        autoCompleteType="name"
-        onChange={event => setName(event.nativeEvent.text)}
-        placeholder="What's your name?"
+      <Formik
+        initialValues={{ name: '' }}
+        validationSchema={validationSchema}
+        onSubmit={(values: User) => {
+          submitCallback(values);
+        }}
+        render={({
+          handleBlur,
+          handleChange,
+          handleSubmit,
+          values,
+        }: FormikProps<User>) => (
+          <>
+            <TextInput
+              autoCompleteType="name"
+              onBlur={handleBlur('name')}
+              onChangeText={handleChange('name')}
+              labelText="What's your name?"
+              placeholder="Sam Doe"
+              value={values.name}
+            />
+            <Button title="Let's start!" onPress={handleSubmit as any} />
+          </>
+        )}
       />
-      <Button title="Let's start!" onPress={() => completeStep()} />
     </WelcomeBlock>
   );
 };

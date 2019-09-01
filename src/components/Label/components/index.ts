@@ -1,0 +1,1 @@
+export { LabelText } from './LabelText';
