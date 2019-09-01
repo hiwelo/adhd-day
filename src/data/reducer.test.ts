@@ -14,9 +14,7 @@ describe('Reducers — combination', () => {
     let reducerList;
 
     try {
-      reducerList = await getDirectoriesList(path.join(__dirname), {
-        withFileTypes: true,
-      });
+      reducerList = await getDirectoriesList(path.join(__dirname));
     } catch (e) {
       console.error('Unable to get the list of directories in ./src/data');
       throw e;
