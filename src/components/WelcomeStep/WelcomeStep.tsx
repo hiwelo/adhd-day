@@ -25,7 +25,7 @@ const WelcomeStep = () => {
         I am a ADHD companion. My purpose is to help you with your daily
         routines and medications.
       </Paragraph>
-      <Paragraph>
+      <Paragraph spacing="comfortable">
         Ready? So let's start with the basics, how should I call you?
       </Paragraph>
       <Formik

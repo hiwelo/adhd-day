@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { Text } from './components';
+import { Text, TextProps } from './components';
 
-type ParagraphProps = {
+interface ParagraphProps extends TextProps {
   children: React.ReactNode;
-};
+}
 
 const Paragraph = ({
   children,
+  ...others
 }: ParagraphProps): React.ReactElement<ParagraphProps> => (
-  <Text>{children}</Text>
+  <Text {...others}>{children}</Text>
 );
 
 export default Paragraph;
