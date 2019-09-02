@@ -4,11 +4,13 @@ import { StyledProps } from 'styled-components';
 
 import { Colors } from './colors';
 import { Scale } from './scale';
+import { Spacing } from './spacing';
 import { Typography } from './typography';
 
 interface RootAppTheme extends DefaultTheme {
   colors: Colors;
   scale: Scale;
+  spacing: Spacing;
   typography: Typography;
 }
 
