@@ -18,7 +18,7 @@ const HomeScreen = ({ navigation }: ScreenPropsInterface) => {
     // early-termination if user already set
     if (user.name) return;
 
-    navigation.navigate('Welcome');
+    navigation.navigate('AppLoading');
   };
   redirectToWelcomeIfUserUnset();
 

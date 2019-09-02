@@ -4,11 +4,12 @@ import {
 } from 'react-navigation';
 
 import {
+  AppLoadingScreen,
+  DiaryScreen,
   HomeScreen,
   PillsScreen,
   SettingsScreen,
   WelcomeScreen,
-  DiaryScreen,
 } from './views';
 
 const AppStack = createBottomTabNavigator(
@@ -26,12 +27,15 @@ const AppStack = createBottomTabNavigator(
 
 export default createSwitchNavigator(
   {
+    AppLoadingScreen: {
+      screen: AppLoadingScreen,
+    },
     AppStack,
     Welcome: {
       screen: WelcomeScreen,
     },
   },
   {
-    initialRouteName: 'Welcome',
+    initialRouteName: 'AppLoadingScreen',
   },
 );

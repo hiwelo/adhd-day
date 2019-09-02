@@ -5,6 +5,10 @@ import {
   NavigationState,
 } from 'react-navigation';
 
+export interface ComponentWithNavProps {
+  navigation: NavigationScreenProp<NavigationState, NavigationParams>;
+}
+
 export interface ScreenPropsInterface {
   navigation: NavigationScreenProp<NavigationState, NavigationParams>;
 }

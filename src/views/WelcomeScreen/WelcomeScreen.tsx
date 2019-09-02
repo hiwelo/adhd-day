@@ -1,24 +1,27 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { WelcomeView } from './components';
-import { WelcomeStep } from '../../components';
 import { ScreenPropsInterface } from '../../common/types';
+import { WelcomeStep } from '../../components';
+import { setUser } from '../../data/user/actions';
+import { User } from '../../data/user/types';
 
 const WelcomeScreen = ({ navigation }: ScreenPropsInterface) => {
-  const { user } = useSelector(state => state.data);
+  const dispatch = useDispatch();
 
-  /**
-   * Redirects to Home if we already have some info about the user
-   */
-  if (user.name) navigation.navigate('Home');
+  const onSubmit = (values: User) => {
+    if (!values.name) return;
+
+    dispatch(setUser(values));
+    navigation.navigate('Home');
+  };
 
   return (
     <>
       <WelcomeView>
-        <StatusBar barStyle="light-content" />
-        <WelcomeStep />
+        <WelcomeStep onSubmit={onSubmit} />
       </WelcomeView>
     </>
   );
