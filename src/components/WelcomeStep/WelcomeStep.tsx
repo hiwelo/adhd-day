@@ -3,10 +3,11 @@ import React from 'react';
 import { Button } from 'react-native';
 import * as Yup from 'yup';
 
-import { WelcomeBlock, WelcomeTitle } from './components';
+import { WelcomeBlock } from './components';
 import { Paragraph } from '../Paragraph';
 import { TextInput } from '../TextInput';
 import { User } from '../../data/user/types';
+import { Heading, LARGE_TITLE } from '../Heading';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
@@ -19,7 +20,7 @@ interface WelcomeStepProps {
 const WelcomeStep = ({ onSubmit }: WelcomeStepProps) => {
   return (
     <WelcomeBlock>
-      <WelcomeTitle>Welcome! 👋</WelcomeTitle>
+      <Heading type={LARGE_TITLE}>Welcome! 👋</Heading>
       <Paragraph>I'm Sam, nice to meet you!</Paragraph>
       <Paragraph>
         I am a ADHD companion. My purpose is to help you with your daily
