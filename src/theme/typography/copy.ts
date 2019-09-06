@@ -7,6 +7,7 @@ import {
   FONT_WEIGHT_REGULAR,
   FONT_WEIGHT_SEMIBOLD,
   LINE_HEIGHT_COMFORTABLE,
+  LINE_HEIGHT_IOS,
   LINE_HEIGHT_UNIT,
   LINE_HEIGHT_MEDIUM,
   LINE_HEIGHT_BASE,
@@ -28,7 +29,7 @@ export const copy = {
     fontStack: FONT_STACK_DEFAULT,
     fontSize: FONT_SIZE_DEFAULT,
     fontWeight: FONT_WEIGHT_REGULAR,
-    lineHeight: LINE_HEIGHT_COMFORTABLE,
+    lineHeight: LINE_HEIGHT_IOS,
     letterSpacing: LETTER_SPACING_NORMAL,
   },
   code: {

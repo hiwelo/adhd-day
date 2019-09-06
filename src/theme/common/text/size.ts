@@ -1,4 +1,4 @@
-export const FONT_SIZE_DEFAULT = 18;
+export const FONT_SIZE_DEFAULT = 17;
 export const FONT_SIZE_DETAILS = 16;
 export const FONT_SIZE_INPUT = 20;
 
