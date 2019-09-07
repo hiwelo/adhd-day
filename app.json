@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ADHDay",
-    "slug": "adhday",
+    "name": "ADDay",
+    "slug": "adday",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -11,7 +11,7 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/app-icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -24,7 +24,16 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "studio.raccoon.adhday",
       "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundImage": "./assets/app-android-icon-background.png",
+        "foregroundImage": "./assets/app-android-icon-foreground.png"
+      },
+      "icon": "./assets/app-icon.png",
+      "package": "studio.raccoon.adhday"
     },
     "description": "",
     "githubUrl": "https://github.com/hiwelo/adhd-day"
