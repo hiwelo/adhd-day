@@ -5,12 +5,12 @@ import { Notifications } from 'expo';
 import { LocalNotification } from 'expo/build/Notifications/Notifications.types';
 import Permissions from 'expo-permissions';
 
-import { getPermission } from '../../common';
+import { askPermission } from '../../common';
 import { TabBarIconInterface } from '../../common/types';
 
 const PillsScreen = () => {
   const triggerNotification = async () => {
-    const notificationPermission = await getPermission(
+    const notificationPermission = await askPermission(
       Permissions.NOTIFICATIONS,
     );
 
