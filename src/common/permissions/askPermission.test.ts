@@ -1,13 +1,13 @@
 import Permissions from 'expo-permissions';
 
-import { getPermission } from './getPermission';
+import { askPermission } from './askPermission';
 
 jest.mock('expo-permissions');
 
 const getAsync = Permissions.getAsync as any;
 const askAsync = Permissions.askAsync as any;
 
-describe('Utilities — getPermission', () => {
+describe('Utilities — askPermission', () => {
   it('should request user for permission if undetermined', async () => {
     getAsync.mockImplementation(() => {
       return { status: Permissions.PermissionStatus.UNDETERMINED };
@@ -17,7 +17,7 @@ describe('Utilities — getPermission', () => {
       return { status: Permissions.PermissionStatus.GRANTED };
     });
 
-    expect(await getPermission(Permissions.NOTIFICATIONS)).toBe(
+    expect(await askPermission(Permissions.NOTIFICATIONS)).toBe(
       Permissions.PermissionStatus.GRANTED,
     );
 
@@ -25,7 +25,7 @@ describe('Utilities — getPermission', () => {
       return { status: Permissions.PermissionStatus.DENIED };
     });
 
-    expect(await getPermission(Permissions.NOTIFICATIONS)).toBe(
+    expect(await askPermission(Permissions.NOTIFICATIONS)).toBe(
       Permissions.PermissionStatus.DENIED,
     );
   });
@@ -35,7 +35,7 @@ describe('Utilities — getPermission', () => {
       return { status: Permissions.PermissionStatus.DENIED };
     });
 
-    expect(await getPermission(Permissions.NOTIFICATIONS)).toBe(
+    expect(await askPermission(Permissions.NOTIFICATIONS)).toBe(
       Permissions.PermissionStatus.DENIED,
     );
   });
@@ -45,7 +45,7 @@ describe('Utilities — getPermission', () => {
       return { status: Permissions.PermissionStatus.GRANTED };
     });
 
-    expect(await getPermission(Permissions.NOTIFICATIONS)).toBe(
+    expect(await askPermission(Permissions.NOTIFICATIONS)).toBe(
       Permissions.PermissionStatus.GRANTED,
     );
   });

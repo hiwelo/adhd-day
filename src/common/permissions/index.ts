@@ -1,1 +1,1 @@
-export { getPermission } from './getPermission';
+export { askPermission } from './askPermission';
