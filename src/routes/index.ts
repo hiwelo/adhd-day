@@ -14,10 +14,10 @@ import {
 
 export const AppStack = createBottomTabNavigator(
   {
-    Home: HomeScreen,
-    Pills: PillsScreen,
-    Diary: DiaryScreen,
-    Settings: SettingsScreen,
+    Home: { screen: HomeScreen },
+    Pills: { screen: PillsScreen },
+    Diary: { screen: DiaryScreen },
+    Settings: { screen: SettingsScreen },
   },
   {
     initialRouteName: 'Home',
@@ -27,9 +27,9 @@ export const AppStack = createBottomTabNavigator(
 
 export const BaseRoutes = createSwitchNavigator(
   {
-    Loading: AppLoadingScreen,
-    AppStack: AppStack,
-    Welcome: WelcomeScreen,
+    Loading: { screen: AppLoadingScreen },
+    AppStack: { screen: AppStack },
+    Welcome: { screen: WelcomeScreen },
   },
   {
     initialRouteName: 'Loading',

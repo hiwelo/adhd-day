@@ -1,3 +1,4 @@
+export { Container } from './Container';
 export { DevelopmentMode } from './DevelopmentMode';
 export { Heading, HeadingTypes, LARGE_TITLE } from './Heading';
 export { Label } from './Label';
