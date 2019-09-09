@@ -4,12 +4,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { createAppContainer } from 'react-navigation';
 import { ThemeProvider } from 'styled-components/native';
 
-import routes from './routes';
+import { BaseRoutes } from './routes';
 import { store, persistor } from './store';
 import theme from './theme';
 import { DevelopmentMode } from './components';
 
-const NavigationContainer = createAppContainer(routes);
+const NavigationContainer = createAppContainer(BaseRoutes);
 
 const App = () => (
   <>
