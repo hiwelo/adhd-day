@@ -21,6 +21,7 @@
     "expo-permissions": "~6.0.0",
     "formik": "^1.5.8",
     "lodash": "^4.17.15",
+    "nachos-ui": "^0.2.0-beta.1",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
