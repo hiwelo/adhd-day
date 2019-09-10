@@ -1,10 +1,9 @@
-import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native';
 
 import { Container, Message } from './components';
-import { ScreenPropsInterface, TabBarIconInterface } from '../../common/types';
+import { ScreenPropsInterface } from '../../common/types';
 import { resetUser } from '../../data/user/actions';
 
 const HomeScreen = ({ navigation }: ScreenPropsInterface) => {
@@ -38,14 +37,6 @@ const HomeScreen = ({ navigation }: ScreenPropsInterface) => {
       <Button onPress={() => resetCurrentUser()} title="Reset" />
     </Container>
   );
-};
-
-HomeScreen.navigationOptions = {
-  title: 'Your Day',
-  tabBarIcon: ({ tintColor }: TabBarIconInterface) => (
-    <Ionicons name="ios-today" size={20} color={tintColor} />
-  ),
-  tabBarLabel: 'Today',
 };
 
 export default HomeScreen;

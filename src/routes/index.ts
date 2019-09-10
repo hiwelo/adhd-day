@@ -1,34 +1,13 @@
-import {
-  createBottomTabNavigator,
-  createSwitchNavigator,
-} from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 
-import {
-  AppLoadingScreen,
-  DiaryScreen,
-  HomeScreen,
-  PillsScreen,
-  SettingsScreen,
-  WelcomeScreen,
-} from '../views';
+import { AppRoutes } from './AppRoutes';
 
-export const AppStack = createBottomTabNavigator(
-  {
-    Home: { screen: HomeScreen },
-    Pills: { screen: PillsScreen },
-    Diary: { screen: DiaryScreen },
-    Settings: { screen: SettingsScreen },
-  },
-  {
-    initialRouteName: 'Home',
-    backBehavior: 'history',
-  },
-);
+import { AppLoadingScreen, WelcomeScreen } from '../views';
 
-export const BaseRoutes = createSwitchNavigator(
+export default createSwitchNavigator(
   {
     Loading: { screen: AppLoadingScreen },
-    AppStack: { screen: AppStack },
+    AppStack: AppRoutes,
     Welcome: { screen: WelcomeScreen },
   },
   {
