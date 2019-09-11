@@ -8,11 +8,8 @@ import {
   MedicationCard,
   MedicationCardAction,
 } from '../../components';
-import {
-  removeMedication,
-  Medication,
-  Prescriptions,
-} from '../../data/medication';
+import { removeMedication, Prescriptions } from '../../data/medication';
+import Styles from '../../styles';
 
 const MedicationListScreen = ({ navigation }: ScreenProps) => {
   const dispatch = useDispatch();
@@ -24,15 +21,17 @@ const MedicationListScreen = ({ navigation }: ScreenProps) => {
     navigation.navigate('Edit');
   };
 
-  const deleteMedication = (medicationId: Medication['medicationId']) => {
-    dispatch(removeMedication(medicationId));
-  };
-
   const medicationCardActions: MedicationCardAction[] = [
     {
+      labelText: 'Edit',
+      callback: medication => {
+        navigation.navigate('Edit', { medication });
+      },
+    },
+    {
       labelText: 'Delete',
-      callback: medicationId => {
-        deleteMedication(medicationId);
+      callback: medication => {
+        dispatch(removeMedication(medication.medicationId));
       },
     },
   ];
