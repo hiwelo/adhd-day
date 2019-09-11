@@ -1,13 +1,14 @@
 import React from 'react';
+import { Button, View } from 'react-native';
 
 import { Heading } from '../Heading';
 import { Paragraph } from '../Paragraph';
 import { Medication, MEDICATION_MODE_READABLE } from '../../data/medication';
-import { Button, View } from 'react-native';
+import Styles from '../../styles';
 
 const MedicationCard = ({ medication, actions }: MedicationCardProps) => {
   return (
-    <View>
+    <View style={Styles.medicationCard.card}>
       <Heading type="LargeTitle">{medication.name}</Heading>
       <Paragraph>{MEDICATION_MODE_READABLE[medication.mode]}</Paragraph>
       {actions &&
@@ -17,7 +18,7 @@ const MedicationCard = ({ medication, actions }: MedicationCardProps) => {
             title={action.labelText}
             onPress={
               (() => {
-                action.callback(medication.medicationId);
+                action.callback(medication);
               }) as any
             }
           />
@@ -33,7 +34,7 @@ export interface MedicationCardProps {
 
 export interface MedicationCardAction {
   labelText: string;
-  callback?(medicationId: Medication['medicationId']): void;
+  callback?(medication: Medication): void;
 }
 
 export default MedicationCard;

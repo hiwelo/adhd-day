@@ -16,10 +16,6 @@ import {
   updateMedication,
 } from '../../data/medication';
 
-interface MedicationEditScreenProps extends ScreenProps {
-  medication?: Medication;
-}
-
 const validationSchema = Yup.object().shape({
   name: Yup.string().required(),
   mode: Yup.mixed()
@@ -31,18 +27,16 @@ const validationSchema = Yup.object().shape({
     .required(),
 });
 
-const MedicationEditScreen = ({
-  medication,
-  navigation,
-}: MedicationEditScreenProps) => {
-  const currentMedication = medication || { name: undefined };
+const MedicationEditScreen = ({ navigation }: ScreenProps) => {
+  const medication = navigation.getParam('medication', { name: undefined });
+  const isNewMedication = !medication.name;
   const dispatch = useDispatch();
 
   const onSubmit = (values: Medication) => {
-    if (medication) {
-      dispatch(updateMedication(values));
-    } else {
+    if (isNewMedication) {
       dispatch(addMedication(values));
+    } else {
+      dispatch(updateMedication(values));
     }
 
     navigation.navigate('List');
@@ -50,9 +44,9 @@ const MedicationEditScreen = ({
 
   return (
     <Container>
-      <Text>Add medication</Text>
+      <Text>{isNewMedication ? 'Add' : 'Edit'} medication</Text>
       <Formik
-        initialValues={currentMedication}
+        initialValues={medication}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
         render={({
@@ -60,7 +54,6 @@ const MedicationEditScreen = ({
           handleBlur,
           handleChange,
           handleSubmit,
-          isSubmitting,
           touched,
           values,
         }: FormikProps<Medication>) => (
@@ -89,10 +82,10 @@ const MedicationEditScreen = ({
               />
             )}
             <Button
-              title={`${medication ? 'Edit' : 'Add'} this medication`}
+              title={`${isNewMedication ? 'Add' : 'Edit'} this medication`}
               onPress={handleSubmit as any}
-              disabled={isSubmitting}
             />
+            <Button title="Go back" onPress={() => navigation.goBack()} />
           </>
         )}
       />
