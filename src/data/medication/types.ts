@@ -2,6 +2,11 @@ export const MEDICATION_MODE_ON_DEMAND = 'on-demand';
 export const MEDICATION_MODE_INTERVAL = 'interval';
 export const MEDICATION_MODE_FIXED = 'fixed';
 
+export const MEDICATION_MODE_READABLE = {};
+MEDICATION_MODE_READABLE[MEDICATION_MODE_ON_DEMAND] = 'On-demand medication';
+MEDICATION_MODE_READABLE[MEDICATION_MODE_INTERVAL] = 'Interval-based schedule';
+MEDICATION_MODE_READABLE[MEDICATION_MODE_FIXED] = 'Fixed schedule';
+
 export interface Medication {
   /**
    * Medication's name

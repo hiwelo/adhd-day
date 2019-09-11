@@ -24,7 +24,7 @@ const OnDemandInputs = ({ onBlur, onChange, values }: OnDemandInputsProps) => {
 
   return (
     <TextInput
-      autoCompleteType="configuration.dailyIntake"
+      autoCompleteType="off"
       onBlur={onBlur('configuration.dailyIntake')}
       onChangeText={onChange('configuration.dailyIntake')}
       labelText="Maximum intake per day"
