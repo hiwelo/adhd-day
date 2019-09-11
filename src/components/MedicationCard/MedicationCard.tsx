@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Heading, Paragraph } from '..';
+import { Heading } from '../Heading';
+import { Paragraph } from '../Paragraph';
 import { Medication, MEDICATION_MODE_READABLE } from '../../data/medication';
 import { Button, View } from 'react-native';
 
