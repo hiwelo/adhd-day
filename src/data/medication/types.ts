@@ -1,3 +1,12 @@
+export const MEDICATION_MODE_ON_DEMAND = 'on-demand';
+export const MEDICATION_MODE_INTERVAL = 'interval';
+export const MEDICATION_MODE_FIXED = 'fixed';
+
+export const MEDICATION_MODE_READABLE = {};
+MEDICATION_MODE_READABLE[MEDICATION_MODE_ON_DEMAND] = 'On-demand medication';
+MEDICATION_MODE_READABLE[MEDICATION_MODE_INTERVAL] = 'Interval-based schedule';
+MEDICATION_MODE_READABLE[MEDICATION_MODE_FIXED] = 'Fixed schedule';
+
 export interface Medication {
   /**
    * Medication's name
@@ -12,13 +21,33 @@ export interface Medication {
   /**
    * Intake mode for this medication
    */
-  mode?: 'on-demand' | 'interval' | 'fixed';
+  mode?:
+    | typeof MEDICATION_MODE_ON_DEMAND
+    | typeof MEDICATION_MODE_INTERVAL
+    | typeof MEDICATION_MODE_FIXED;
 
-  /**
-   * Intake configuration
-   */
   configuration?: OnDemandIntake | IntervalIntake | FixedIntake;
 }
+
+export interface OnDemandMedication extends Medication {
+  mode: typeof MEDICATION_MODE_ON_DEMAND;
+  configuration?: OnDemandIntake;
+}
+
+export interface IntervalMedication extends Medication {
+  mode: typeof MEDICATION_MODE_INTERVAL;
+  configuration?: IntervalIntake;
+}
+
+export interface FixedMedication extends Medication {
+  mode: typeof MEDICATION_MODE_FIXED;
+  configuration?: FixedIntake;
+}
+
+export type MedicationTypes =
+  | OnDemandMedication
+  | IntervalMedication
+  | FixedMedication;
 
 export interface IntakeWindow {
   /**
@@ -61,14 +90,14 @@ interface OnDemandIntake {
   /**
    * Daily maximum intake
    */
-  dailyIntake: number;
+  dailyIntake?: number;
 }
 
 interface IntervalIntake {
   /**
    * Daily maximum intake
    */
-  dailyIntake: number;
+  dailyIntake?: number;
 
   /**
    * Interval in seconds between two intakes
